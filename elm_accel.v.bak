@@ -1,0 +1,179 @@
+
+module elm_accel (
+    input  wire        clk,
+    input  wire        reset_n,
+
+    // Avalon MM Slave (HPS → FPGA via Lightweight Bridge)
+    input  wire [3:0]  avs_address,      // 0=CTRL/STATUS, 1=DATA, 2=ADDR
+    input  wire        avs_read,
+    output reg  [31:0] avs_readdata,
+    input  wire        avs_write,
+    input  wire [31:0] avs_writedata,
+
+    output wire        avs_waitrequest
+);
+
+    assign avs_waitrequest = 1'b0;
+
+    // =============================================================================
+    // Parâmetros ELM (iguais ao Python)
+    // =============================================================================
+    localparam IMG_SIZE    = 784;
+    localparam HIDDEN_SIZE = 128;
+    localparam OUTPUT_SIZE = 10;
+
+    // =============================================================================
+    // Memórias internas – On-Chip Memory (BRAM) via Quartus Basic Functions
+    // =============================================================================
+    // O Quartus sintetiza automaticamente estas arrays como altsyncram (M10K)
+    reg signed [15:0] img_mem  [0:IMG_SIZE-1];          // 784 palavras
+    reg signed [15:0] w_in_mem [0:(HIDDEN_SIZE*IMG_SIZE)-1]; // ~100k palavras
+    reg signed [15:0] b_mem    [0:HIDDEN_SIZE-1];
+    reg signed [15:0] beta_mem [0:(OUTPUT_SIZE*HIDDEN_SIZE)-1];
+
+    reg signed [15:0] h_mem    [0:HIDDEN_SIZE-1];   // temporária (pequena)
+    reg signed [15:0] y_mem    [0:OUTPUT_SIZE-1];   // temporária (pequena)
+
+    // =============================================================================
+    // Sinais da FSM
+    // =============================================================================
+    reg [1:0]  state;        // 0=DONE, 1=BUSY, 2=ERROR
+    reg        img_ok, w_ok, b_ok;
+    reg [3:0]  pred;
+
+    reg [15:0] store_addr_reg;
+    reg [15:0] store_data_reg;
+
+    // Datapath
+    reg [7:0]  h_idx;
+    reg [9:0]  i_idx;
+    reg [3:0]  o_idx;
+    reg signed [31:0] mac_accum;
+    reg [2:0]  comp_phase;
+
+    // =============================================================================
+    // Ativação tanh – match exato com np.tanh do Python (Q4.12)
+    // =============================================================================
+    function signed [15:0] activation;
+        input signed [15:0] x;
+        reg signed [15:0] abs_x;
+        begin
+            abs_x = x[15] ? -x : x;
+            if (abs_x >= 16'sh2000)      activation = x[15] ? -16'sh1000 : 16'sh1000;
+            else if (abs_x >= 16'sh1800) activation = x[15] ? -16'sh0E66 : 16'sh0E66;
+            else if (abs_x >= 16'sh1000) activation = x[15] ? -16'sh0B33 : 16'sh0B33;
+            else if (abs_x >= 16'sh0800) activation = x[15] ? -(abs_x - 16'sh0400) : (abs_x - 16'sh0400);
+            else                         activation = x;
+        end
+    endfunction
+
+    // =============================================================================
+    // FSM + Datapath
+    // =============================================================================
+    always @(posedge clk or negedge reset_n) begin
+        if (!reset_n) begin
+            state         <= 2'd0;
+            img_ok        <= 1'b0;
+            w_ok          <= 1'b0;
+            b_ok          <= 1'b0;
+            pred          <= 4'd0;
+            comp_phase    <= 3'd0;
+            h_idx         <= 8'd0;
+            i_idx         <= 10'd0;
+            o_idx         <= 4'd0;
+            mac_accum     <= 32'd0;
+            store_addr_reg<= 16'd0;
+            store_data_reg<= 16'd0;
+        end else begin
+
+            // ===================== LEITURA STATUS =====================
+            if (avs_read && avs_address == 4'd0)
+                avs_readdata <= {24'b0, pred, 4'b0, state};
+
+            // ===================== ESCRITA (STORE / START / RESET) =====================
+            if (avs_write) begin
+                case (avs_address)
+                    4'd0: begin // Opcode
+                        case (avs_writedata[4:0])
+                            5'd0: begin // RESET
+                                state <= 2'd0; img_ok <= 0; w_ok <= 0; b_ok <= 0; pred <= 0; comp_phase <= 0;
+                            end
+                            5'd1: begin // STORE_IMG
+                                if (store_addr_reg < IMG_SIZE) begin
+                                    img_mem[store_addr_reg] <= store_data_reg;
+                                    img_ok <= 1'b1; state <= 2'd0;
+                                end else state <= 2'd2;
+                            end
+                            5'd2: begin // STORE_WEIGHTS
+                                if (store_addr_reg < HIDDEN_SIZE*IMG_SIZE) begin
+                                    w_in_mem[store_addr_reg] <= store_data_reg;
+                                    w_ok <= 1'b1; state <= 2'd0;
+                                end else state <= 2'd2;
+                            end
+                            5'd3: begin // STORE_BIAS
+                                if (store_addr_reg < HIDDEN_SIZE) begin
+                                    b_mem[store_addr_reg] <= store_data_reg;
+                                    b_ok <= 1'b1; state <= 2'd0;
+                                end else state <= 2'd2;
+                            end
+                            5'd4: begin // START
+                                if (img_ok && w_ok && b_ok) begin
+                                    state <= 2'd1; comp_phase <= 3'd1;
+                                    h_idx <= 0; i_idx <= 0; mac_accum <= 0;
+                                end else state <= 2'd2;
+                            end
+                            default: state <= 2'd2;
+                        endcase
+                    end
+                    4'd1: store_data_reg <= avs_writedata[15:0];
+                    4'd2: store_addr_reg <= avs_writedata[15:0];
+                endcase
+            end
+
+            // ===================== DATAPATH (executa apenas em BUSY) =====================
+            if (state == 2'd1 && comp_phase != 0) begin
+                case (comp_phase)
+                    3'd1: begin // HIDDEN LAYER
+                        if (i_idx < IMG_SIZE) begin
+                            mac_accum <= mac_accum + (w_in_mem[h_idx*IMG_SIZE + i_idx] * img_mem[i_idx]);
+                            i_idx <= i_idx + 1;
+                        end else begin
+                            mac_accum <= mac_accum + (b_mem[h_idx] <<< 12);
+                            h_mem[h_idx] <= activation(mac_accum[27:12]);
+                            if (h_idx < HIDDEN_SIZE-1) begin
+                                h_idx <= h_idx + 1; i_idx <= 0; mac_accum <= 0;
+                            end else begin
+                                comp_phase <= 3'd2; o_idx <= 0; i_idx <= 0; mac_accum <= 0;
+                            end
+                        end
+                    end
+
+                    3'd2: begin // OUTPUT LAYER
+                        if (i_idx < HIDDEN_SIZE) begin
+                            mac_accum <= mac_accum + (beta_mem[o_idx*HIDDEN_SIZE + i_idx] * h_mem[i_idx]);
+                            i_idx <= i_idx + 1;
+                        end else begin
+                            y_mem[o_idx] <= activation(mac_accum[27:12]);
+                            if (o_idx < OUTPUT_SIZE-1) begin
+                                o_idx <= o_idx + 1; i_idx <= 0; mac_accum <= 0;
+                            end else
+                                comp_phase <= 3'd3;
+                        end
+                    end
+
+                    3'd3: begin // ARGMAX
+                        reg [3:0] max_idx = 0;
+                        reg signed [15:0] max_val = y_mem[0];
+                        integer k;
+                        for (k=1; k<OUTPUT_SIZE; k=k+1)
+                            if (y_mem[k] > max_val) begin max_val = y_mem[k]; max_idx = k; end
+                        pred <= max_idx;
+                        state <= 2'd0;
+                        comp_phase <= 3'd0;
+                    end
+                endcase
+            end
+        end
+    end
+
+endmodule
