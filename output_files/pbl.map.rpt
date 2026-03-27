@@ -1,0 +1,1193 @@
+Analysis & Synthesis report for pbl
+Thu Mar 26 21:17:37 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis IP Cores Summary
+  9. State Machine - |elm_accel|estado_atual
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated
+ 14. Source assignments for ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated
+ 15. Source assignments for ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated
+ 16. Source assignments for ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated
+ 17. Parameter Settings for User Entity Instance: ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component
+ 18. Parameter Settings for User Entity Instance: ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component
+ 19. Parameter Settings for User Entity Instance: ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component
+ 20. Parameter Settings for User Entity Instance: ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "ram_beta_1280x16:mem_beta_inst"
+ 23. Port Connectivity Checks: "ram_b_128x16:mem_b_inst"
+ 24. Port Connectivity Checks: "ram_W_100352x16:mem_W_inst"
+ 25. Port Connectivity Checks: "ram_img_784x16:mem_img_inst"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Mar 26 21:17:37 2026           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; pbl                                             ;
+; Top-level Entity Name           ; elm_accel                                       ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 75                                              ;
+; Total pins                      ; 105                                             ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; elm_accel          ; pbl                ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 6           ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-6         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                     ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; elm_accel.v                      ; yes             ; User Verilog HDL File        ; C:/Users/arthu/Documents/PBL/elm_accel.v                                     ;         ;
+; ram_img_784x16.v                 ; yes             ; User Wizard-Generated File   ; C:/Users/arthu/Documents/PBL/ram_img_784x16.v                                ;         ;
+; ram_W_100352x16.v                ; yes             ; User Wizard-Generated File   ; C:/Users/arthu/Documents/PBL/ram_W_100352x16.v                               ;         ;
+; ram_b_128x16.v                   ; yes             ; User Wizard-Generated File   ; C:/Users/arthu/Documents/PBL/ram_b_128x16.v                                  ;         ;
+; ram_beta_1280x16.v               ; yes             ; User Wizard-Generated File   ; C:/Users/arthu/Documents/PBL/ram_beta_1280x16.v                              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal251.inc                   ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_qbo1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf                          ;         ;
+; db/altsyncram_9go1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf                          ;         ;
+; db/decode_qma.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/decode_qma.tdf                               ;         ;
+; db/decode_j2a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/decode_j2a.tdf                               ;         ;
+; db/mux_pib.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/mux_pib.tdf                                  ;         ;
+; db/altsyncram_8ao1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf                          ;         ;
+; db/altsyncram_3do1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf                          ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 57        ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 79        ;
+;     -- 7 input functions                    ; 2         ;
+;     -- 6 input functions                    ; 4         ;
+;     -- 5 input functions                    ; 35        ;
+;     -- 4 input functions                    ; 2         ;
+;     -- <=3 input functions                  ; 36        ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 75        ;
+;                                             ;           ;
+; I/O pins                                    ; 105       ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 75        ;
+; Total fan-out                               ; 742       ;
+; Average fan-out                             ; 2.04      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |elm_accel                 ; 79 (79)             ; 75 (75)                   ; 0                 ; 0          ; 105  ; 0            ; |elm_accel          ; elm_accel   ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                          ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------+--------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                           ; IP Include File    ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------+--------------------+
+; Altera ; RAM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |elm_accel|ram_W_100352x16:mem_W_inst     ; ram_W_100352x16.v  ;
+; Altera ; RAM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |elm_accel|ram_b_128x16:mem_b_inst        ; ram_b_128x16.v     ;
+; Altera ; RAM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |elm_accel|ram_beta_1280x16:mem_beta_inst ; ram_beta_1280x16.v ;
+; Altera ; RAM: 1-PORT  ; 25.1    ; N/A          ; N/A          ; |elm_accel|ram_img_784x16:mem_img_inst    ; ram_img_784x16.v   ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------+
+; State Machine - |elm_accel|estado_atual                                         ;
++--------------------+-------------------+--------------------+-------------------+
+; Name               ; estado_atual.DONE ; estado_atual.ERROR ; estado_atual.BUSY ;
++--------------------+-------------------+--------------------+-------------------+
+; estado_atual.DONE  ; 0                 ; 0                  ; 0                 ;
+; estado_atual.BUSY  ; 1                 ; 0                  ; 1                 ;
+; estado_atual.ERROR ; 1                 ; 1                  ; 0                 ;
++--------------------+-------------------+--------------------+-------------------+
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; beta_write                            ; Lost fanout                            ;
+; b_write                               ; Lost fanout                            ;
+; w_write                               ; Lost fanout                            ;
+; img_write                             ; Lost fanout                            ;
+; pred[1,3]                             ; Stuck at GND due to stuck port data_in ;
+; pred[2]                               ; Merged with pred[0]                    ;
+; Total Number of Removed Registers = 7 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 75    ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 75    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 36    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |elm_accel|Selector2       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Source assignments for ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                  ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                   ;
++---------------------------------+--------------------+------+-----------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Source assignments for ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                 ;
++---------------------------------+--------------------+------+----------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                  ;
++---------------------------------+--------------------+------+----------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Source assignments for ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                              ;
++---------------------------------+--------------------+------+-------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                               ;
++---------------------------------+--------------------+------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Source assignments for ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                     ;
++---------------------------------+--------------------+------+--------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                      ;
++---------------------------------+--------------------+------+--------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+----------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                         ;
++------------------------------------+----------------------+----------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                      ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                   ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                 ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                 ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                               ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                      ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                      ;
+; WIDTH_A                            ; 16                   ; Signed Integer                               ;
+; WIDTHAD_A                          ; 10                   ; Signed Integer                               ;
+; NUMWORDS_A                         ; 784                  ; Signed Integer                               ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                      ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                      ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                      ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                      ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                      ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                      ;
+; WIDTH_B                            ; 1                    ; Untyped                                      ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                      ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                      ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                      ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                      ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                      ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                      ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                      ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                      ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                      ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                      ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                      ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                      ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                      ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                      ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                               ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                      ;
+; RAM_BLOCK_TYPE                     ; M10K                 ; Untyped                                      ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                      ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                      ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                      ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                      ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                      ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                      ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                      ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                      ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                      ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                      ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                      ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                      ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                      ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                      ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                      ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                      ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                      ;
+; CBXI_PARAMETER                     ; altsyncram_qbo1      ; Untyped                                      ;
++------------------------------------+----------------------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                        ;
++------------------------------------+----------------------+---------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                     ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                              ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                     ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                     ;
+; WIDTH_A                            ; 16                   ; Signed Integer                              ;
+; WIDTHAD_A                          ; 17                   ; Signed Integer                              ;
+; NUMWORDS_A                         ; 100352               ; Signed Integer                              ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                     ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                     ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                     ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                     ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                     ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                     ;
+; WIDTH_B                            ; 1                    ; Untyped                                     ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                     ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                     ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                     ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                     ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                     ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                     ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                     ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                     ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                     ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                     ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                     ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                     ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                              ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                     ;
+; RAM_BLOCK_TYPE                     ; M10K                 ; Untyped                                     ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                     ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                     ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                     ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                     ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                     ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                     ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                     ;
+; CBXI_PARAMETER                     ; altsyncram_9go1      ; Untyped                                     ;
++------------------------------------+----------------------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                     ;
++------------------------------------+----------------------+------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                  ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                               ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                             ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                             ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                           ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                  ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                  ;
+; WIDTH_A                            ; 16                   ; Signed Integer                           ;
+; WIDTHAD_A                          ; 7                    ; Signed Integer                           ;
+; NUMWORDS_A                         ; 128                  ; Signed Integer                           ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                  ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                  ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                  ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                  ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                  ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                  ;
+; WIDTH_B                            ; 1                    ; Untyped                                  ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                  ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                  ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                  ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                  ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                  ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                  ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                  ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                  ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                  ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                  ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                  ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                  ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                  ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                  ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                           ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                  ;
+; RAM_BLOCK_TYPE                     ; M10K                 ; Untyped                                  ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                  ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                  ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                  ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                  ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                  ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                  ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                  ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                  ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                  ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                  ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                  ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                  ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                  ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                  ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                  ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                  ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                  ;
+; CBXI_PARAMETER                     ; altsyncram_8ao1      ; Untyped                                  ;
++------------------------------------+----------------------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                            ;
++------------------------------------+----------------------+-------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                         ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                      ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                    ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                    ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                  ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                         ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                         ;
+; WIDTH_A                            ; 16                   ; Signed Integer                                  ;
+; WIDTHAD_A                          ; 11                   ; Signed Integer                                  ;
+; NUMWORDS_A                         ; 1280                 ; Signed Integer                                  ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                         ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                         ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                         ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                         ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                         ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                         ;
+; WIDTH_B                            ; 1                    ; Untyped                                         ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                         ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                         ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                         ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                         ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                         ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                         ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                         ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                         ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                         ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                         ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                         ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                         ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                         ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                         ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                  ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                         ;
+; RAM_BLOCK_TYPE                     ; M10K                 ; Untyped                                         ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                         ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                         ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                         ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                         ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                         ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                         ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                         ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                         ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                         ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                         ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                         ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                         ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                         ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                         ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                         ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                         ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                         ;
+; CBXI_PARAMETER                     ; altsyncram_3do1      ; Untyped                                         ;
++------------------------------------+----------------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                           ;
++-------------------------------------------+----------------------------------------------------------------+
+; Name                                      ; Value                                                          ;
++-------------------------------------------+----------------------------------------------------------------+
+; Number of entity instances                ; 4                                                              ;
+; Entity Instance                           ; ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component    ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                    ;
+;     -- WIDTH_A                            ; 16                                                             ;
+;     -- NUMWORDS_A                         ; 784                                                            ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                   ;
+;     -- WIDTH_B                            ; 1                                                              ;
+;     -- NUMWORDS_B                         ; 1                                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                   ;
+;     -- RAM_BLOCK_TYPE                     ; M10K                                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                      ;
+; Entity Instance                           ; ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component     ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                    ;
+;     -- WIDTH_A                            ; 16                                                             ;
+;     -- NUMWORDS_A                         ; 100352                                                         ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                   ;
+;     -- WIDTH_B                            ; 1                                                              ;
+;     -- NUMWORDS_B                         ; 1                                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                   ;
+;     -- RAM_BLOCK_TYPE                     ; M10K                                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                      ;
+; Entity Instance                           ; ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component        ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                    ;
+;     -- WIDTH_A                            ; 16                                                             ;
+;     -- NUMWORDS_A                         ; 128                                                            ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                   ;
+;     -- WIDTH_B                            ; 1                                                              ;
+;     -- NUMWORDS_B                         ; 1                                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                   ;
+;     -- RAM_BLOCK_TYPE                     ; M10K                                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                      ;
+; Entity Instance                           ; ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                    ;
+;     -- WIDTH_A                            ; 16                                                             ;
+;     -- NUMWORDS_A                         ; 1280                                                           ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                   ;
+;     -- WIDTH_B                            ; 1                                                              ;
+;     -- NUMWORDS_B                         ; 1                                                              ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                         ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                   ;
+;     -- RAM_BLOCK_TYPE                     ; M10K                                                           ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                      ;
++-------------------------------------------+----------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ram_beta_1280x16:mem_beta_inst"                                                     ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ram_b_128x16:mem_b_inst"                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ram_W_100352x16:mem_W_inst"                                                         ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ram_img_784x16:mem_img_inst"                                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 75                          ;
+;     CLR               ; 7                           ;
+;     CLR SCLR          ; 32                          ;
+;     ENA CLR           ; 36                          ;
+; arriav_lcell_comb     ; 83                          ;
+;     arith             ; 32                          ;
+;         1 data inputs ; 32                          ;
+;     extend            ; 2                           ;
+;         7 data inputs ; 2                           ;
+;     normal            ; 49                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 2                           ;
+;         3 data inputs ; 4                           ;
+;         4 data inputs ; 2                           ;
+;         5 data inputs ; 35                          ;
+;         6 data inputs ; 4                           ;
+; boundary_port         ; 105                         ;
+;                       ;                             ;
+; Max LUT depth         ; 4.10                        ;
+; Average LUT depth     ; 2.17                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Thu Mar 26 21:17:28 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pbl -c pbl
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file elm_accel.v
+    Info (12023): Found entity 1: elm_accel File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file ram_img_784x16.v
+    Info (12023): Found entity 1: ram_img_784x16 File: C:/Users/arthu/Documents/PBL/ram_img_784x16.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file ram_w_100352x16.v
+    Info (12023): Found entity 1: ram_W_100352x16 File: C:/Users/arthu/Documents/PBL/ram_W_100352x16.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file ram_b_128x16.v
+    Info (12023): Found entity 1: ram_b_128x16 File: C:/Users/arthu/Documents/PBL/ram_b_128x16.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file ram_beta_1280x16.v
+    Info (12023): Found entity 1: ram_beta_1280x16 File: C:/Users/arthu/Documents/PBL/ram_beta_1280x16.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file top.v
+    Info (12023): Found entity 1: top File: C:/Users/arthu/Documents/PBL/top.v Line: 1
+Info (12127): Elaborating entity "elm_accel" for the top level hierarchy
+Warning (10030): Net "addr_reg[31..17]" at elm_accel.v(24) has no driver or initial value, using a default initial value '0' File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+Info (12128): Elaborating entity "ram_img_784x16" for hierarchy "ram_img_784x16:mem_img_inst" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 38
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_img_784x16.v Line: 86
+Info (12130): Elaborated megafunction instantiation "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_img_784x16.v Line: 86
+Info (12133): Instantiated megafunction "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/arthu/Documents/PBL/ram_img_784x16.v Line: 86
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "784"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "M10K"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "10"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qbo1.tdf
+    Info (12023): Found entity 1: altsyncram_qbo1 File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_qbo1" for hierarchy "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "ram_W_100352x16" for hierarchy "ram_W_100352x16:mem_W_inst" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 39
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_W_100352x16.v Line: 86
+Info (12130): Elaborated megafunction instantiation "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_W_100352x16.v Line: 86
+Info (12133): Instantiated megafunction "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/arthu/Documents/PBL/ram_W_100352x16.v Line: 86
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "100352"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "M10K"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "17"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9go1.tdf
+    Info (12023): Found entity 1: altsyncram_9go1 File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 34
+Info (12128): Elaborating entity "altsyncram_9go1" for hierarchy "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_qma.tdf
+    Info (12023): Found entity 1: decode_qma File: C:/Users/arthu/Documents/PBL/db/decode_qma.tdf Line: 23
+Info (12128): Elaborating entity "decode_qma" for hierarchy "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|decode_qma:decode3" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 44
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_j2a.tdf
+    Info (12023): Found entity 1: decode_j2a File: C:/Users/arthu/Documents/PBL/db/decode_j2a.tdf Line: 23
+Info (12128): Elaborating entity "decode_j2a" for hierarchy "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|decode_j2a:rden_decode" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 45
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_pib.tdf
+    Info (12023): Found entity 1: mux_pib File: C:/Users/arthu/Documents/PBL/db/mux_pib.tdf Line: 23
+Info (12128): Elaborating entity "mux_pib" for hierarchy "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|mux_pib:mux2" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 46
+Info (12128): Elaborating entity "ram_b_128x16" for hierarchy "ram_b_128x16:mem_b_inst" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 40
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_b_128x16.v Line: 86
+Info (12130): Elaborated megafunction instantiation "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_b_128x16.v Line: 86
+Info (12133): Instantiated megafunction "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/arthu/Documents/PBL/ram_b_128x16.v Line: 86
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "128"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "M10K"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "7"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_8ao1.tdf
+    Info (12023): Found entity 1: altsyncram_8ao1 File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_8ao1" for hierarchy "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "ram_beta_1280x16" for hierarchy "ram_beta_1280x16:mem_beta_inst" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 41
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_beta_1280x16.v Line: 86
+Info (12130): Elaborated megafunction instantiation "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component" File: C:/Users/arthu/Documents/PBL/ram_beta_1280x16.v Line: 86
+Info (12133): Instantiated megafunction "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/arthu/Documents/PBL/ram_beta_1280x16.v Line: 86
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "1280"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "M10K"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "11"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_3do1.tdf
+    Info (12023): Found entity 1: altsyncram_3do1 File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_3do1" for hierarchy "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated" File: c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "addr_reg[10]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "addr_reg[10]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[9]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[8]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[7]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[6]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[5]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[4]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[3]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[2]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[1]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "addr_reg[0]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[15]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[14]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[13]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[12]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[11]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[10]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[9]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[8]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[7]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[6]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[5]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[4]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[3]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[2]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[1]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+    Warning (12110): Net "data_reg[0]" is missing source, defaulting to GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 24
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[0]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 37
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[1]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 59
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[2]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 81
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[3]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 103
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[4]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 125
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[5]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 147
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[6]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 169
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[7]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 191
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[8]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 213
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[9]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 235
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[10]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 257
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[11]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 279
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[12]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 301
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[13]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 323
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[14]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 345
+        Warning (14320): Synthesized away node "ram_beta_1280x16:mem_beta_inst|altsyncram:altsyncram_component|altsyncram_3do1:auto_generated|q_a[15]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_3do1.tdf Line: 367
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[0]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 37
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[1]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 59
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[2]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 81
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[3]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 103
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[4]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 125
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[5]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 147
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[6]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 169
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[7]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 191
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[8]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 213
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[9]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 235
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[10]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 257
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[11]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 279
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[12]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 301
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[13]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 323
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[14]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 345
+        Warning (14320): Synthesized away node "ram_b_128x16:mem_b_inst|altsyncram:altsyncram_component|altsyncram_8ao1:auto_generated|q_a[15]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_8ao1.tdf Line: 367
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a0" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 47
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a1" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 69
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a2" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 91
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a3" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 113
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a4" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 135
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a5" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 157
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a6" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 179
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a7" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 201
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a8" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 223
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a9" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 245
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a10" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 267
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a11" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 289
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a12" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 311
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a13" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 333
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a14" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 355
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a15" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 377
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a16" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 399
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a17" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 421
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a18" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 443
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a19" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 465
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a20" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 487
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a21" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 509
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a22" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 531
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a23" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 553
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a24" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 575
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a25" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 597
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a26" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 619
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a27" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 641
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a28" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 663
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a29" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 685
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a30" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 707
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a31" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 729
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a32" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 751
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a33" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 773
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a34" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 795
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a35" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 817
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a36" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 839
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a37" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 861
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a38" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 883
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a39" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 905
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a40" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 927
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a41" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 949
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a42" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 971
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a43" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 993
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a44" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1015
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a45" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1037
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a46" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1059
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a47" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1081
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a48" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1103
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a49" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1125
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a50" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1147
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a51" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1169
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a52" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1191
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a53" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1213
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a54" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1235
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a55" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1257
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a56" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1279
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a57" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1301
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a58" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1323
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a59" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1345
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a60" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1367
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a61" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1389
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a62" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1411
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a63" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1433
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a64" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1455
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a65" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1477
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a66" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1499
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a67" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1521
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a68" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1543
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a69" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1565
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a70" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1587
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a71" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1609
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a72" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1631
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a73" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1653
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a74" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1675
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a75" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1697
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a76" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1719
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a77" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1741
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a78" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1763
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a79" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1785
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a80" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1807
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a81" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1829
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a82" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1851
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a83" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1873
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a84" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1895
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a85" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1917
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a86" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1939
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a87" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1961
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a88" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 1983
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a89" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2005
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a90" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2027
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a91" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2049
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a92" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2071
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a93" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2093
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a94" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2115
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a95" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2137
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a96" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2159
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a97" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2181
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a98" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2203
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a99" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2225
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a100" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2247
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a101" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2269
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a102" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2291
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a103" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2313
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a104" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2335
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a105" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2357
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a106" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2379
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a107" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2401
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a108" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2423
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a109" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2445
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a110" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2467
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a111" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2489
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a112" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2511
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a113" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2533
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a114" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2555
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a115" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2577
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a116" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2599
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a117" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2621
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a118" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2643
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a119" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2665
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a120" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2687
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a121" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2709
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a122" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2731
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a123" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2753
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a124" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2775
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a125" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2797
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a126" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2819
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a127" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2841
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a128" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2863
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a129" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2885
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a130" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2907
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a131" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2929
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a132" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2951
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a133" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2973
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a134" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 2995
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a135" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3017
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a136" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3039
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a137" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3061
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a138" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3083
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a139" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3105
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a140" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3127
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a141" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3149
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a142" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3171
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a143" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3193
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a144" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3215
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a145" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3237
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a146" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3259
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a147" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3281
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a148" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3303
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a149" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3325
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a150" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3347
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a151" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3369
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a152" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3391
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a153" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3413
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a154" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3435
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a155" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3457
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a156" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3479
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a157" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3501
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a158" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3523
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a159" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3545
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a160" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3567
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a161" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3589
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a162" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3611
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a163" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3633
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a164" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3655
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a165" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3677
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a166" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3699
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a167" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3721
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a168" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3743
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a169" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3765
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a170" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3787
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a171" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3809
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a172" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3831
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a173" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3853
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a174" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3875
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a175" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3897
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a176" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3919
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a177" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3941
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a178" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3963
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a179" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 3985
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a180" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4007
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a181" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4029
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a182" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4051
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a183" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4073
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a184" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4095
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a185" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4117
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a186" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4139
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a187" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4161
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a188" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4183
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a189" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4205
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a190" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4227
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a191" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4249
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a192" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4271
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a193" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4293
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a194" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4315
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a195" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4337
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a196" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4359
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a197" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4381
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a198" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4403
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a199" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4425
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a200" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4447
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a201" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4469
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a202" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4491
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a203" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4513
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a204" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4535
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a205" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4557
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a206" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4579
+        Warning (14320): Synthesized away node "ram_W_100352x16:mem_W_inst|altsyncram:altsyncram_component|altsyncram_9go1:auto_generated|ram_block1a207" File: C:/Users/arthu/Documents/PBL/db/altsyncram_9go1.tdf Line: 4601
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[0]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 37
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[1]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 59
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[2]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 81
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[3]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 103
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[4]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 125
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[5]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 147
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[6]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 169
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[7]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 191
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[8]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 213
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[9]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 235
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[10]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 257
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[11]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 279
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[12]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 301
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[13]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 323
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[14]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 345
+        Warning (14320): Synthesized away node "ram_img_784x16:mem_img_inst|altsyncram:altsyncram_component|altsyncram_qbo1:auto_generated|q_a[15]" File: C:/Users/arthu/Documents/PBL/db/altsyncram_qbo1.tdf Line: 367
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "avs_waitrequest" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 12
+    Warning (13410): Pin "hex3[3]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex3[4]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex3[5]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex3[6]" is stuck at VCC File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex2[1]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex2[3]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex2[4]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex2[5]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex1[0]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex1[5]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex0[3]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex0[4]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "hex0[6]" is stuck at VCC File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 15
+    Warning (13410): Pin "ledr_pred[1]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 17
+    Warning (13410): Pin "ledr_pred[3]" is stuck at GND File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 17
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 30 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "avs_writedata[3]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[4]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[5]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[6]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[7]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[8]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[9]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[10]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[11]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[12]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[13]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[14]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[15]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[16]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[17]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[18]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[19]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[20]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[21]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[22]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[23]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[24]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[25]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[26]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[27]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[28]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[29]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[30]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_writedata[31]" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 9
+    Warning (15610): No output dependent on input pin "avs_read" File: C:/Users/arthu/Documents/PBL/elm_accel.v Line: 10
+Info (21057): Implemented 220 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 40 input pins
+    Info (21059): Implemented 65 output pins
+    Info (21061): Implemented 115 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 338 warnings
+    Info: Peak virtual memory: 4914 megabytes
+    Info: Processing ended: Thu Mar 26 21:17:37 2026
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:17
+
+
